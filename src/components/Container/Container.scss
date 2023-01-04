@@ -1,0 +1,29 @@
+.wrapper-container {
+    padding: 1.5rem;
+
+    .container-top {
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
+        padding-top: 10px;
+        ul {
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+
+            li {
+                margin: 8px;
+            }
+        }
+        .avatar {
+            img {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+            }
+        }
+    }
+}

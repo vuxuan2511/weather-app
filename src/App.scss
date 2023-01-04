@@ -1,0 +1,15 @@
+.App {
+    height: 90vh;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    .container {
+        padding: 0 0.75rem !important;
+        .container-side-bar {
+            background-color: var(--bs-white);
+        }
+        .container-container {
+            background-color: rgb(246, 246, 248);
+        }
+    }
+}
