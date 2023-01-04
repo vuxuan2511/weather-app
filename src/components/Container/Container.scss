@@ -1,6 +1,7 @@
 .wrapper-container {
     padding: 1.5rem;
-
+    overflow-y: scroll;
+    height: 90vh;
     .container-top {
         display: flex;
         justify-content: space-between;
@@ -11,11 +12,20 @@
             list-style: none;
             display: flex;
             font-size: 2rem;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
 
             li {
                 margin: 8px;
+                a {
+                    color: #6c757d;
+                    text-decoration: none;
+                }
+                .active {
+                    color: #212529;
+                    padding-bottom: 2px;
+                    border-bottom: 2px solid #212529;
+                }
             }
         }
         .avatar {
