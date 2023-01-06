@@ -1,6 +1,6 @@
 import SideBar from './components/SideBar/SideBar';
 import Container from './components/Container/Container';
-import './App.scss';
+import './assets/style/App.scss';
 function App() {
     return (
         <div className="App">

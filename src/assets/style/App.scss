@@ -3,6 +3,7 @@
     position: absolute;
     width: 100%;
     overflow: hidden;
+    overflow-y: scroll;
     .container {
         padding: 0 0.75rem !important;
         .container-side-bar {
@@ -10,6 +11,16 @@
         }
         .container-container {
             background-color: rgb(246, 246, 248);
+        }
+    }
+}
+@media (max-width: 764px) {
+    .App {
+        position: static;
+
+        .container {
+            .container-container {
+            }
         }
     }
 }
