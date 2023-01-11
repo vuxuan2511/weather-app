@@ -16,7 +16,7 @@
             font-size: 2rem;
             margin-bottom: 16px;
             font-weight: 500;
-            color: rgba(0, 0, 0, 0.26);
+            color: var(--bs-gray);
         }
 
         .content {
@@ -41,7 +41,7 @@
             font-size: 2rem;
             margin-bottom: 16px;
             font-weight: 500;
-            color: rgba(0, 0, 0, 0.26);
+            color: var(--bs-gray);
         }
         .sun-rise,
         .sun-set {

@@ -1,3 +1,6 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { timeFormat } from '../../SideBar/timefomat';
 import Sun from '../../../assets/image/sun.svg';
 import SunWind from '../../../assets/image/sunwind.svg';
 import SunRise from '../../../assets/image/sunrise.svg';
@@ -8,7 +11,7 @@ import Pressure from '../../../assets/image/pressure.svg';
 
 import './Today.scss';
 
-function Today() {
+function Today({ weather }) {
     return (
         <div className="row">
             <div className="today-container">
@@ -17,7 +20,7 @@ function Today() {
                         <p>UV index</p>
                         <div className="text-center content">
                             <img src={Sun} alt="123" className="image" />
-                            <p>0.75</p>
+                            <p>{weather?.current?.uvi}</p>
                         </div>
                     </div>
                 </div>
@@ -26,20 +29,20 @@ function Today() {
                         <p>Wind Status</p>
                         <div className="text-center content">
                             <img src={SunWind} alt="123" className="image" />
-                            <p>4.36 km/h</p>
+                            <p>{`${Math.round(weather?.current?.wind_speed * 3.6 * 100) / 100} km/h`}</p>
                         </div>
                     </div>
                 </div>
                 <div className=" col-md-6 col-xl-4  col-sm-12 p-3">
                     <div className="sun-rise-set">
-                        <p>Wind Status</p>
+                        <p>Sunrise & Sunset</p>
                         <div className="sun-rise">
                             <img src={SunRise} alt="123" className="image" />
-                            <p>4.36 km/h</p>
+                            <p>{timeFormat(weather?.current?.sunrise)}</p>
                         </div>
                         <div className="sun-set">
                             <img src={SunSet} alt="123" className="image" />
-                            <p>4.36 km/h</p>
+                            <p>{timeFormat(weather?.current?.sunset)}</p>
                         </div>
                     </div>
                 </div>
@@ -49,7 +52,7 @@ function Today() {
                         <p>Humidity</p>
                         <div className="text-center content">
                             <img src={Humidity} alt="123" className="image" />
-                            <p>69 %</p>
+                            <p>{weather?.current?.humidity} %</p>
                         </div>
                     </div>
                 </div>
@@ -58,7 +61,7 @@ function Today() {
                         <p>Visibility</p>
                         <div className="text-center content">
                             <img src={Visibility} alt="123" className="image" />
-                            <p>10 km</p>
+                            <p>{`${weather?.current?.visibility / 1000} km`}</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +70,7 @@ function Today() {
                         <p>Pressure</p>
                         <div className="text-center content">
                             <img src={Pressure} alt="123" className="image" />
-                            <p>1024 hPa</p>
+                            <p>{weather?.current?.pressure} hPa</p>
                         </div>
                     </div>
                 </div>
@@ -75,5 +78,8 @@ function Today() {
         </div>
     );
 }
+const mapStateToProps = (state) => {
+    return { weather: state.weather };
+};
 
-export default Today;
+export default connect(mapStateToProps)(Today);

@@ -4,12 +4,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import './assets/style/GlobalStyle.scss';
-import store from './redux/store/store';
 
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+import reducers from './reducers';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
+        <Provider store={createStore(reducers, applyMiddleware(thunk))}>
             <Router>
                 <App />
             </Router>
