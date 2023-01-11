@@ -1,0 +1,58 @@
+.wrap-week {
+    .week-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        .item-container {
+            cursor: pointer;
+            padding: 5px;
+            .item {
+                border-radius: 6px;
+                padding: 8px;
+                color: var(--bs-gray);
+                .item-date {
+                    font-size: 1.6rem;
+                    margin-bottom: 16px;
+                }
+                .item-img-temp {
+                    text-align: center;
+                    .item-img {
+                        width: 50px;
+                        height: 50px;
+                    }
+                    .item-temp {
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        margin-bottom: 16px;
+                    }
+                }
+            }
+        }
+    }
+    .item-description {
+        margin-top: 50px;
+        background-color: white;
+        padding: 8px;
+        border-radius: 6px;
+        color: var(--bs-gray);
+        .text-date {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .item-description-down {
+            font-size: 1.6rem;
+            font-weight: 500;
+            .text-temp-current,
+            .text-temp,
+            .text-humidity,
+            .text-wind-speed,
+            .text-sunrise,
+            .text-sunset,
+            .text-desp,
+            .text-pressure {
+                margin-bottom: 16px;
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { timeFormat } from '../../SideBar/timefomat';
+import { timeFormat } from '../timefomat';
+
 import Sun from '../../../assets/image/sun.svg';
 import SunWind from '../../../assets/image/sunwind.svg';
 import SunRise from '../../../assets/image/sunrise.svg';
@@ -20,7 +21,7 @@ function Today({ weather }) {
                         <p>UV index</p>
                         <div className="text-center content">
                             <img src={Sun} alt="123" className="image" />
-                            <p>{weather?.current?.uvi}</p>
+                            <p>{weather?.uvi}</p>
                         </div>
                     </div>
                 </div>
@@ -29,7 +30,7 @@ function Today({ weather }) {
                         <p>Wind Status</p>
                         <div className="text-center content">
                             <img src={SunWind} alt="123" className="image" />
-                            <p>{`${Math.round(weather?.current?.wind_speed * 3.6 * 100) / 100} km/h`}</p>
+                            <p>{`${Math.round(weather?.wind_speed * 3.6 * 100) / 100} km/h`}</p>
                         </div>
                     </div>
                 </div>
@@ -38,11 +39,11 @@ function Today({ weather }) {
                         <p>Sunrise & Sunset</p>
                         <div className="sun-rise">
                             <img src={SunRise} alt="123" className="image" />
-                            <p>{timeFormat(weather?.current?.sunrise)}</p>
+                            <p>{timeFormat(weather?.sunrise)}</p>
                         </div>
                         <div className="sun-set">
                             <img src={SunSet} alt="123" className="image" />
-                            <p>{timeFormat(weather?.current?.sunset)}</p>
+                            <p>{timeFormat(weather?.sunset)}</p>
                         </div>
                     </div>
                 </div>
@@ -52,7 +53,7 @@ function Today({ weather }) {
                         <p>Humidity</p>
                         <div className="text-center content">
                             <img src={Humidity} alt="123" className="image" />
-                            <p>{weather?.current?.humidity} %</p>
+                            <p>{weather?.humidity} %</p>
                         </div>
                     </div>
                 </div>
@@ -61,7 +62,7 @@ function Today({ weather }) {
                         <p>Visibility</p>
                         <div className="text-center content">
                             <img src={Visibility} alt="123" className="image" />
-                            <p>{`${weather?.current?.visibility / 1000} km`}</p>
+                            <p>{`${weather?.visibility / 1000} km`}</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +71,7 @@ function Today({ weather }) {
                         <p>Pressure</p>
                         <div className="text-center content">
                             <img src={Pressure} alt="123" className="image" />
-                            <p>{weather?.current?.pressure} hPa</p>
+                            <p>{weather?.pressure} hPa</p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +80,7 @@ function Today({ weather }) {
     );
 }
 const mapStateToProps = (state) => {
-    return { weather: state.weather };
+    return { weather: state.weather.current };
 };
 
 export default connect(mapStateToProps)(Today);

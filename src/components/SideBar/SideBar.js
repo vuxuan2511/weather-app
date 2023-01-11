@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { fetchWeatherAndLocation, fetchLocation } from '../../actions';
+import { connect } from 'react-redux';
+import { fetchWeatherAndLocation } from '../../actions';
 
 import Fluid from '../../assets/image/Clouds.png';
 import ImagePeople from '../../assets/image/weather-fore-with-people.webp';
 import Search from './search/search';
 import './SideBar.scss';
-import { timeFormat } from './timefomat';
+
+import { timeFormat } from '../Container/timefomat';
 
 function SideBar({ weather, location, fetchWeatherAndLocation }) {
     useEffect(() => {
         fetchWeatherAndLocation('Ha noi');
     }, [fetchWeatherAndLocation]);
 
-    console.log('hello', weather);
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dateFormat = (strDate) => {
         const date = new Date(strDate * 1000);
@@ -26,15 +26,14 @@ function SideBar({ weather, location, fetchWeatherAndLocation }) {
                 <Search />
                 <img src={Fluid} alt="123" />
                 <div className="name-city ">{location?.name}</div>
-                <div className="temperature">{weather?.current?.temp}°C</div>
+                <div className="temperature">{weather?.temp}°C</div>
                 <div className="time">
                     <div className="day">
-                        {dateFormat(weather?.current?.dt)} , {timeFormat(weather?.current?.dt)}
+                        {dateFormat(weather?.dt)} , {timeFormat(weather?.dt)}
                     </div>
                 </div>
                 <div className="clouds">
-                    {weather?.current?.weather[0]?.description} <br /> {weather?.current?.weather[0]?.main}{' '}
-                    {`${weather?.current?.clouds}%`}
+                    {weather?.weather[0]?.description} <br /> {weather?.weather[0]?.main} {`${weather?.clouds}%`}
                 </div>
 
                 <div className="image-bottom">
@@ -46,7 +45,7 @@ function SideBar({ weather, location, fetchWeatherAndLocation }) {
     );
 }
 const mapStateToProps = (state) => {
-    return { weather: state.weather, location: state.location, tempScale: state.tempScale };
+    return { weather: state.weather.current, location: state.location, tempScale: state.tempScale };
 };
 
 export default connect(mapStateToProps, { fetchWeatherAndLocation })(SideBar);
