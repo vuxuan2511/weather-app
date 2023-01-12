@@ -19,13 +19,13 @@ function SideBar({ weather, location, fetchWeatherAndLocation }) {
         const date = new Date(strDate * 1000);
         return days[date.getDay()];
     };
-
+    const nameCity = location.name === 'Hanoi' ? 'Ha Noi' : location.name;
     return (
         <div className="wrapper-side-bar p-4">
             <div className="side-bar">
                 <Search />
                 <img src={Fluid} alt="123" />
-                <div className="name-city ">{location?.name}</div>
+                <div className="name-city ">{nameCity}</div>
                 <div className="temperature">{weather?.temp}°C</div>
                 <div className="time">
                     <div className="day">
@@ -37,7 +37,7 @@ function SideBar({ weather, location, fetchWeatherAndLocation }) {
                 </div>
 
                 <div className="image-bottom">
-                    <div className="name-city">{location?.name}</div>
+                    <div className="name-city">{nameCity}</div>
                     <img src={ImagePeople} alt="123" />
                 </div>
             </div>

@@ -1,6 +1,8 @@
 import SideBar from './components/SideBar/SideBar';
 import Container from './components/Container/Container';
 import './assets/style/App.scss';
+
+import { ToastContainer } from 'react-toastify';
 function App() {
     return (
         <div className="App">
@@ -14,6 +16,17 @@ function App() {
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={4000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     );
 }
