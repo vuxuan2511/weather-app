@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeatherAndLocation } from '../../actions';
 
-import Fluid from '../../assets/image/Clouds.png';
+//import Clouds from '../../assets/image/Clouds.png';
+import Clear from '../../assets/image/Clear.png';
 import ImagePeople from '../../assets/image/weather-fore-with-people.webp';
 import Search from './search/search';
 import './SideBar.scss';
@@ -15,16 +16,19 @@ function SideBar({ weather, location, fetchWeatherAndLocation }) {
     }, [fetchWeatherAndLocation]);
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
     const dateFormat = (strDate) => {
         const date = new Date(strDate * 1000);
         return days[date.getDay()];
     };
     const nameCity = location.name === 'Hanoi' ? 'Ha Noi' : location.name;
+    // console.log(weather);
+
     return (
         <div className="wrapper-side-bar p-4">
             <div className="side-bar">
                 <Search />
-                <img src={Fluid} alt="123" />
+                <img src={Clear} alt="123" />
                 <div className="name-city ">{nameCity}</div>
                 <div className="temperature">{weather?.temp}°C</div>
                 <div className="time">
@@ -45,7 +49,7 @@ function SideBar({ weather, location, fetchWeatherAndLocation }) {
     );
 }
 const mapStateToProps = (state) => {
-    return { weather: state.weather.current, location: state.location, tempScale: state.tempScale };
+    return { weather: state.weather.current, location: state.location };
 };
 
 export default connect(mapStateToProps, { fetchWeatherAndLocation })(SideBar);

@@ -48,7 +48,6 @@ export const fetchWeatherByHour = (city) => {
                     payload: response.data,
                 });
             } else {
-                toast.error('Not found city!');
                 dispatch({
                     type: 'FETCH_WEATHER_HOUR_ERROR',
                 });
